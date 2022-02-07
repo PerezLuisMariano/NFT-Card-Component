@@ -2,12 +2,12 @@
     /* Primary */
     --softBlue: hsl(215, 51%, 70%);
     --cyan: hsl(178, 100%, 50%);
-
+    --cyan2: hsla(178, 100%, 50%, 0.5);
     /*Neutral*/
     --veryDarkBlueBG: hsl(217, 54%, 11%);
     --veryDarkBlueCardBG: hsl(216, 50%, 16%);
     --veryDarkBlueLine: hsl(215, 32%, 27%);
-    --white: hsl(0, 0%, 100%),
+    --white: hsl(0, 0%, 100%);
 }
 *{
     margin: 0;
@@ -17,4 +17,222 @@
 html{
     font-family: 'Outfit', sans-serif;
     font-size: 62.5%;
+    background-color: var(--veryDarkBlueBG);
+}
+
+body{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    width: 100%;
+    height: auto;
+}
+
+/* MAIN */
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+/* MAIN -> CARD */
+main .card{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(3, min-content);
+    justify-items: center;
+    /* AGREGAR ALIGN BETTWEN */
+    width: 90%;
+    max-width: 300px;
+    height: auto;
+    background-color: var(--veryDarkBlueCardBG);
+    border-radius: 12px;
+    gap: 20px;
+    box-shadow: 0 0 30px 0px rgba(0,0,0,0.2);
+    animation: moving-card 1.5s;
+    
+}
+
+/* MAIN -< CARD -> IMG SECTION*/
+main .card__img{
+    position: relative;
+    width: 85%;
+    height: auto;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 23px 0 0 0;
+    
+    
+}
+main .card__img img{
+    width: 100%;
+    height: 100%;
+    
+}
+main .card__img span{
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--cyan2);
+    transition: 0.5s opacity;
+}
+main .card__img span::after{
+    position: relative;
+    opacity: unset;
+    left: calc(50% - 25px);
+    top: calc(50% - 25px);
+    width: 50px;
+    height: 50px;
+    content: url(../assets/icons/icon-view.svg);
+}
+main .card__img:hover > span{
+    opacity: 1;
+    transition: 0.3s opacity;
+}
+
+
+
+
+/* MAIN -< CARD -> MAIN SECTION*/
+main .card__main{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, min-content);
+    width: 85%;
+    height: auto;
+    gap: 20px;
+}
+main .card__main h1{
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+}
+main .card__main h1 a{
+    font-size: 2.1rem;
+    font-weight: 600;
+    text-align: start;
+    color: var(--white);
+    text-decoration: none;
+    transition: 0.3s color;
+}
+main .card__main h1 a:hover{
+    color: var(--cyan);
+    transition: 0.3s color;
+}
+main .card__main p{
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    font-size: 1.6rem;
+    font-weight: 300;
+    text-align: start;
+    color: var(--softBlue);
+}
+
+main .card__main--left{
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+main .card__main--left p{
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: start;
+    color: var(--cyan);
+    align-self: flex-start;
+}
+main .card__main--left p::before{
+    content: url(../assets/icons/icon-ethereum.svg);
+    margin: 0 5px 0 0;
+    vertical-align: middle;
+    
+}
+main .card__main--right{
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+main .card__main--right p{
+    font-size: 1.6rem;
+    font-weight: 3400;
+    text-align: end;
+    color: var(--softBlue);
+}
+main .card__main--right p::before{
+    content: url(../assets/icons/icon-clock.svg);
+    margin: 0 4px 0 0;
+    vertical-align: middle;
+    
+}
+
+/* MAIN -< CARD -> FOOTER SECTION*/
+main .card__footer{
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    width: 85%;
+    height: 60px;
+    border-top: 2px solid var(--veryDarkBlueLine);
+    margin: 0 0 15px 0;
+}
+main .card__footer img{
+    width: 30px;
+    border-radius: 15px;
+    border: 1px solid var(--white);
+}
+main .card__footer h2{
+    font-size: 1.4rem;
+    font-weight: 300;
+    text-align: start;
+    color: var(--softBlue);
+}
+main .card__footer a{
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-align: start;
+    color: var(--white);
+    text-decoration: none;
+    transition: 0.3s color;
+}
+main .card__footer a:hover{
+    color: var(--cyan);
+    transition: 0.3s color;
+}
+
+
+/* FOOTER */
+footer .attribution{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+}
+footer .attribution h2{
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--veryDarkBlueLine);
+    text-align: center;
+}
+footer .attribution a{
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--softBlue);
+    text-decoration: none;
+}
+
+
+@media(min-width: 1024px) {
+    /*ENTIRE CARD´S ANIMATION */
+    @keyframes moving-card{
+        0%{
+            opacity: 0%;
+            transform: translateY(-50px);
+        }
+        50%{
+            opacity: 100%;
+            transform: translateY(0px);
+        }
+    } 
 }
