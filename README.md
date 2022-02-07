@@ -1,7 +1,7 @@
 ## Frontend Mentor - NFT Card Component
 
 ### Screenshot
-![version-desk](design/)
+![version-desk](design/design.png)
 
 
 ### Links
